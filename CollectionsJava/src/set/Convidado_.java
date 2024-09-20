@@ -1,10 +1,10 @@
 package set;
 
-public class Convidado {
+public class Convidado_ {
     private String nome;
     private int codigo;
 
-    public Convidado(String nome, int codigo) {
+    public Convidado_(String nome, int codigo) {
         this.nome = nome;
         this.codigo = codigo;
     }
@@ -37,7 +37,7 @@ public class Convidado {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Convidado other = (Convidado) obj;
+        Convidado_ other = (Convidado_) obj;
         if (codigo != other.codigo)
             return false;
         return true;

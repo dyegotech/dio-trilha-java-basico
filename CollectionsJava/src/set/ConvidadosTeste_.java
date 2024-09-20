@@ -1,8 +1,8 @@
 package set;
 
-public class ConvidadosTeste {
+public class ConvidadosTeste_ {
     public static void main(String[] args) {
-        ConjuntoConvidados conjunto = new ConjuntoConvidados();
+        ConjuntoConvidados_ conjunto = new ConjuntoConvidados_();
 
         System.out.println(conjunto.contarConvidados());
 

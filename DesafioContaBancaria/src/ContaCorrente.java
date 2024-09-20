@@ -1,44 +1,37 @@
 
-public class ContaCorrente extends Conta implements IContaCorrente{
-    
-    private double saldo;
-    
-    public double getSaldo() {
-        return saldo;
-    }
-    
-    public ContaCorrente(Banco banco, int numero, int agencia) {
-        super(banco, numero, agencia);
-        //TODO Auto-generated constructor stub
-    }
+public class ContaCorrente extends Conta implements IContaCorrente {
 
-    @Override
-    public void depositar(double valor) {
-        if (valor > 0){
-            this.saldo += valor;
-            System.out.println("Valor depositado: R$ " + valor);
-            mostraSaldo();
-        }else{
-            System.out.println("O valor não pode ser zero e nem negativo");
-        }
-    }
-
-    @Override
-    public void sacar(double valor) {
-        if (valor <= getSaldo() && valor != 0 && valor > 0){
-            this.saldo -= valor;
-            System.out.println("Valor sacado: R$ " + valor);
-            mostraSaldo();
-        }else{
-            System.out.println("Valor inválido e/ou saldo insuficiente");
-        }
+    public ContaCorrente(Banco banco, Cliente cliente, int agencia) {
+        super(banco, cliente, agencia, "Conta Corrente");
     }
 
     @Override
     public void transferir(Conta contaDestino, double valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'transferir'");
+
+        if (this.getBanco().verificaConta(contaDestino.getNumero(), contaDestino.getAgencia()) != null) {
+            System.out.println("Conta origem: " + this);
+            System.out.println("Valor a ser transferido: R$ " + valor);
+
+            if (valor > 0 && valor <= super.getSaldo()) {
+                this.sacar(valor);
+                contaDestino.depositar(valor, 'T');
+                System.out.println("Saldo atual: R$ " + this.getSaldo());
+                System.out.println("\n*************");
+                System.out.println("Conta destino: " + contaDestino);
+            }else{
+                System.out.println("Valor inválido e/ou saldo insuficiente ");
+            }
+
+        } else {
+            System.out.println("A conta informada não existe");
+        }
+
     }
 
-    
+    @Override
+    public void extrato() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'extrato'");
+    }
+
 }

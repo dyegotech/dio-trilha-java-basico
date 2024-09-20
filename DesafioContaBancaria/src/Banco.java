@@ -29,12 +29,24 @@ public class Banco {
     }
 
     public void mostraContas(){
-        listaContas.stream().forEach(System.out::println);
+        System.out.println(listaContas);
     }
 
-    public void adicionaConta(){
-
+    public void adicionaConta(Conta c){
+        listaContas.add(c);
     };
 
+    public Conta verificaConta(int numero, int agencia){
+        Conta c = null;
+
+        for (Conta cc : listaContas){
+            if(cc.getAgencia() == agencia && cc.getNumero() == numero){
+                c = cc;
+                break;
+            }
+        }
+
+        return c;
+    }
 
 }
