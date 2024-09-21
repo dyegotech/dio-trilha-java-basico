@@ -14,35 +14,9 @@ Funcionalidades gerais:
 Funcionalidades Conta Poupança:
 
 -> Rendimento ao realizar um depósito
+-> Atributo que mostra o de total de rendimento da conta poupança 
 
-Funcionalidades extras:
+Funcionalidades Conta Corrente:
 
--> Atributo de cheque especial na conta corrente
+-> Uso de cheque especial quando o saldo é zero ou negativo
 
-
-saldo : 0
-
-cheque especial: 1.000,00
-
-saldoTotal: 1000
-
-saque 500:
-
-se valor > 0 && valor <= saldototal
-
-se valor <= saldo
-
-saldo = valor;
-
-
-else 
-
-s1 = saldo - valor // 0 - 500 = -500
-s2 = cheque especial -= s1 // 1000 -500 = 500;
-
-deposito: 
-
-
--> Atributo de total de rendimento da conta poupança 
-
-Lista de contas do banco
