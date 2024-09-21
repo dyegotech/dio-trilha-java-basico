@@ -41,4 +41,10 @@ public class ContaPupanca extends Conta implements IContaPoupanca {
         }
     }
 
+    @Override
+    public void extrato() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'extrato'");
+    }
+
 }
