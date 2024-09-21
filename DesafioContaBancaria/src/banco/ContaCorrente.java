@@ -18,26 +18,44 @@ public class ContaCorrente extends Conta {
 
     public void sacar(double valor) {
         System.out.println("Valor solicitado: R$ " + valor);
-        if (valor > 0 && valor <= getSaldo() + getLimiteChequeEspecial()) {
-            if (valor <= getSaldo()) {
+        if (valor > 0) {
+            if (getSaldo() >= valor) { // Saque normal
                 super.sacar(valor);
                 System.out.println("Valor sacado: R$ " + valor);
                 adicionaExtrato(new Extrato("Saque", valor));
                 adicionaExtrato(new Extrato("Saldo", getSaldo()));
-            } else {
-                double s1 = getSaldo() - valor;
-                saldo = s1;
-                limiteChequeEspecial = limiteChequeEspecial - Math.abs(valor);
-                adicionaExtrato(new Extrato("Uso do Cheque especial", valor));
-                adicionaExtrato(new Extrato("Saldo", getSaldo()));
             }
+            else if (valor <= getSaldo() + getLimiteChequeEspecial() || valor <= getLimiteChequeEspecial()){ // Saque com limite 
+                usaChequeEspecial(valor);
+                adicionaExtrato(new Extrato("Saldo", getSaldo()));
+            }else{
+                System.out.println("Saldo insuficiente!");
+            }                
         } else {
-            System.out.println("Valor inválido ou saldo insuficiente");
+            System.out.println("Valor inválido");
         }
     }
 
-    public void usaChequeEspecial() {
+    public void usaChequeEspecial(double valor) {
+        double s1 = getSaldo() - valor;
+        if (saldo <= 0){
+            saldo = s1;
+        }
+        limiteChequeEspecial = getLimiteChequeEspecial() - Math.abs(valor);
+        adicionaExtrato(new Extrato("Uso do Cheque especial", valor));
+        adicionaExtrato(new Extrato("Cheque especial disponível", limiteChequeEspecial));
+    }
 
+    public void depositar(double valor){
+        if (valor > 0){
+            super.depositar(valor);
+            if (getLimiteChequeEspecial() < 1000 && getSaldo() > 0) {
+                limiteChequeEspecial = 1000;
+                adicionaExtrato(new Extrato("Cheque especial restaurado", limiteChequeEspecial));
+            }
+        }else{
+            System.out.println("Valor inválido");
+        }
     }
 
 }

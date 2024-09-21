@@ -22,48 +22,42 @@ public class App {
         // cc.extrato();
         cc.sacar(500);
         cc.extrato();
-        System.out.println("Cheque especial R$ " + cc.getLimiteChequeEspecial());
+                
+        cc.sacar(200);
+        cc.extrato();
+    
+        cc.sacar(100);
+        cc.extrato();
+
+        cc.sacar(300);
+        cc.extrato();
+
+        cc.depositar(1500);
+        cc.extrato();
         
-        cc.sacar(200);
-        cc.extrato();
-        System.out.println("Cheque especial R$ " + cc.getLimiteChequeEspecial());
-
-        cc.sacar(200);
-        cc.extrato();
-        System.out.println("Cheque especial R$ " + cc.getLimiteChequeEspecial());
-
-        cc.sacar(200);
-        cc.extrato();
-        System.out.println("Cheque especial R$ " + cc.getLimiteChequeEspecial());
-        
-        // cc.sacar(700);
-        // cc.extrato();
-        // System.out.println("Cheque especial R$ " + cc.getLimiteChequeEspecial());
-
         /* Teste da conta poupança */
 
         ContaPoupanca cp = new ContaPoupanca(bb, cliente1, 1);
-        // System.out.println(cp);
+        System.out.println(cp);
         
-        // cp.depositar(95);
-        // cp.extrato();
-        // System.out.println(cp);
+        cp.depositar(95);
+        cp.extrato();
+        System.out.println(cp);
         
-        // cp.depositar(100);
-        // cp.extrato();
-        // System.out.println(cp);
+        cp.depositar(100);
+        cp.extrato();
+        System.out.println(cp);
         
         /* Contas do banco */
         
-        // System.out.println("\nContas do banco: \n");
-        // bb.mostraContas();
+        System.out.println("\nContas do banco: \n");
+        bb.mostraContas();
         
         /* Teste de transferência entre contas */
 
-        // cc.transferir(cp, 10);
-        // cc.extrato();
-        // cp.extrato();
-        
+        cc.transferir(cp, 10);
+        cc.extrato();
+        cp.extrato();        
 
     }
 }
