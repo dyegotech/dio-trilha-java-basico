@@ -1,51 +1,69 @@
+import banco.Banco;
+import banco.Cliente;
+import banco.ContaCorrente;
+import banco.ContaPoupanca;
+
 public class App {
     public static void main(String[] args) throws Exception {
         Banco bb = new Banco(1, "Banco do Brasil");
         // System.out.println(bb);
-        Cliente cliente1 = new Cliente("Dyego", "028.773.892-27");
 
-        ContaCorrente cc = new ContaCorrente(bb, cliente1, 1);
-        ContaPupanca cp = new ContaPupanca(bb, cliente1, 1);
-        // System.out.println(c);
+        Cliente cliente1 = new Cliente("Dyego", "123.456.789-10");
+        // System.out.println(cliente1);
 
-        // System.out.println("******************\n");
+        /* Teste da conta corrente */
 
-        // c.mostraSaldo();
+        ContaCorrente cc = new ContaCorrente(bb, cliente1);
+        System.out.println(cc);
+        
+        cc.extrato();
+        System.out.println("Cheque especial R$ " + cc.getLimiteChequeEspecial());
+        // cc.depositar(1000);
+        // cc.extrato();
+        cc.sacar(500);
+        cc.extrato();
+        System.out.println("Cheque especial R$ " + cc.getLimiteChequeEspecial());
+        
+        cc.sacar(200);
+        cc.extrato();
+        System.out.println("Cheque especial R$ " + cc.getLimiteChequeEspecial());
 
-        // c.depositar(10);
+        cc.sacar(200);
+        cc.extrato();
+        System.out.println("Cheque especial R$ " + cc.getLimiteChequeEspecial());
 
-        // c.sacar(10.0);
+        cc.sacar(200);
+        cc.extrato();
+        System.out.println("Cheque especial R$ " + cc.getLimiteChequeEspecial());
+        
+        // cc.sacar(700);
+        // cc.extrato();
+        // System.out.println("Cheque especial R$ " + cc.getLimiteChequeEspecial());
 
-        Banco n = new Banco(2, "Nubank");
+        /* Teste da conta poupança */
 
-        Conta ca = new ContaCorrente(n, cliente1, 3);
+        ContaPoupanca cp = new ContaPoupanca(bb, cliente1, 1);
+        // System.out.println(cp);
+        
+        // cp.depositar(95);
+        // cp.extrato();
+        // System.out.println(cp);
+        
+        // cp.depositar(100);
+        // cp.extrato();
+        // System.out.println(cp);
+        
+        /* Contas do banco */
+        
+        // System.out.println("\nContas do banco: \n");
+        // bb.mostraContas();
+        
+        /* Teste de transferência entre contas */
 
-        System.out.println("Contas do banco: ");
-        bb.adicionaConta(cc);
-        bb.adicionaConta(cp);
-        bb.mostraContas();
-
-        System.out.println("\nConta Corrente:\n");
-        cc.depositar(10);
-        cc.mostraSaldo();
-        cc.sacar(5);
-        cc.mostraSaldo();
-
-        System.out.println("\nConta Poupança:\n");
-        cp.mostraSaldo();
-        cp.depositar(999);
-        cp.mostraSaldo();
-        cp.sacar(999);
-        cp.mostraSaldo();
-        cp.depositar(50);
-        cp.mostraSaldo();
-        cp.sacar(1000);
-        cp.mostraSaldo();
-        cp.render();
-        cp.mostraSaldo();
-
-        System.out.println("\nTransferir");
-        cc.transferir(cp, 4.9);
+        // cc.transferir(cp, 10);
+        // cc.extrato();
+        // cp.extrato();
+        
 
     }
 }
